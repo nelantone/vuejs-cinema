@@ -29,9 +29,9 @@ new Vue({
       data() {
         return {
           movies: [
-            { title: "pulp fiction" },
-            { title: "home alone" },
-            { title: "Austin Powers" }
+            { title: "pulp fiction", genre: genres.CRIME },
+            { title: "home alone", genre: genres.COMEDY },
+            { title: "Austin Powers", genre: genres.COMEDY }
           ]
         };
       }
@@ -42,6 +42,7 @@ new Vue({
           genres
         }
       },
+      props: ['genre', 'time'],
       template: `<div id="movie-filter">
                     <h2>Filter Results</h2>
                     <div class="filter-group">
