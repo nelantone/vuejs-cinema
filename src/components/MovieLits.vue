@@ -1,6 +1,6 @@
 <template>
   <div id="movie-list">
-    <movie-item v-for="movie in filteredMovies" v-bind:movie="movie.movie"></movie-item>
+    <movie-item v-for="movie in filteredMovies" v-bind:movie="movie.movie" v-bind:key="movie.id"></movie-item>
   </div>
 </template>
 <script>
@@ -11,8 +11,21 @@
     props: ['genres', 'time', 'movies' ],
     methods: {
       moviePassesGenreFilter(item) {
-          let movieGenres = item.movie.Genre.split(', ')
-          return this.genres.find(genre => movieGenres.includes(genre));
+          if (!this.genres.length) {
+            return true;
+          } else {
+            let movieGenres = item.movie.Genre.split(", ");
+            let matched = true;
+            this.genres.forEach( genre => {
+              if (movieGenres.indexOf(genre) === -1) {
+                matched = false;
+              }
+            });
+            return matched;
+          }
+          // let movieGenres = item.movie.Genre.split(', ')
+          // return this.genres.find(genre => movieGenres.includes(genre));
+        // /Example: long version of #find
         // find((genre)=>{
         //   return movie.genre === genre
         // })
