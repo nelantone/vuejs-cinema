@@ -4,15 +4,19 @@
       <img v-bind:src="movie.Poster">
     </div>
     <div class="movie-col-right">
-      <div class="movie.title">
+      <div class="movie-title">
         <h2>{{ movie.Title }}</h2>
         <span class="movie-rating">{{ movie.Rated }}</span>
+      </div>
+      <div class="movie-sessions">
+      <div v-for="session in sessions" class="session-time-wrapper" v-bind:key="session">
+        <div class="session-time">{{ session.time }}</div>
       </div>
     </div>
   </div>
 </template>
 <script>
   export default {
-    props: ['movie']
+    props: ['movie', 'sessions']
   }
 </script>
