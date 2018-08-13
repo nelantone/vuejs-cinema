@@ -15,6 +15,14 @@ import { checkFilter } from './util/bus';
 
 const bus = new Vue();
 Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus } });
+
+import VueRouter from 'vue-router';
+// From node module in package.json
+Vue.use(VueRouter);
+
+import routes from './util/routes'
+const router = new VueRouter({ routes });
+
 new Vue({
   el: '#app',
   data: {
@@ -33,5 +41,6 @@ new Vue({
       this.movies = response.data;
     });
     this.$bus.$on('check-filter', checkFilter.bind(this));
-  }
+  },
+  router
 });
