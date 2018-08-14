@@ -1,10 +1,10 @@
 <template>
   <div id="detail" v-if="movie">
-    <movie-item v-bind:movie="movie.movie" v-bind:sessions="[]"></movie-item>
+    <movie-item v-bind:movie="movie.movie"></movie-item>
   </div>
 </template>
 <script>
-import MovieItem from './Movieitem.vue'
+import MovieItem from './MovieItem.vue'
 
 export default {
   props: ['movies' ],
