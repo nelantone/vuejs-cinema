@@ -1,6 +1,6 @@
 <template>
     <div id="overview">
-        <day-select></day-select>
+        <day-select v-bind:selected="day"></day-select>
         <div class="main">
             <movie-list v-bind:genres="genres" v-bind:time="time" v-bind:movies="movies" v-bind:day="day"></movie-list>
             <movie-filter></movie-filter>
@@ -8,7 +8,7 @@
     </div>
 </template>
 <script>
-import MovieList from './MovieLits.vue';
+import MovieList from './MovieList.vue';
 import MovieFilter from './MovieFilter.vue';
 import DaySelect from './DaySelect.vue'
 
